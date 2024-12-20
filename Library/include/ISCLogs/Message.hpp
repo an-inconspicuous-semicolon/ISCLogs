@@ -80,71 +80,71 @@ public:
     /**
      * Returns whether the message is considered a failure, e.g. its severity is Error or higher.
      */
-    [[nodiscard]] inline bool is_failure() const noexcept;
+    [[nodiscard]] bool is_failure() const noexcept;
 
     /**
      * Adds a trace to the message, used to generate a stacktrace of where an error occurred.
      * @param message The message to add at the end of the trace
      * @return The message object for monadic call chains.
      */
-    inline Message add_trace(const std::string& message) noexcept;
+    Message add_trace(const std::string& message) noexcept;
 
     /**
      * Returns the stacktrace currently held by the message.
      */
-    inline const std::list<std::string>& get_trace() const noexcept;
+    const std::list<std::string>& get_trace() const noexcept;
 
     /**
      * Returns the numerical code of the message.
      */
-    [[nodiscard]] inline unsigned int code() const noexcept;
+    [[nodiscard]] unsigned int code() const noexcept;
 
     /**
      * Returns whether the message has a description.
      */
-    [[nodiscard]] inline bool has_description() const noexcept;
+    [[nodiscard]] bool has_description() const noexcept;
 
     /**
      * Returns the name of the message.
      */
-    [[nodiscard]] inline std::string_view name() const noexcept;
+    [[nodiscard]] std::string_view name() const noexcept;
 
     /**
      * Returns the description of the message, or a default description if none was given to the message.
      */
-    [[nodiscard]] inline std::string_view description() const noexcept;
+    [[nodiscard]] std::string_view description() const noexcept;
 
     /**
      * Returns the severity of the message.
      */
-    [[nodiscard]] inline Severity severity() const noexcept;
+    [[nodiscard]] Severity severity() const noexcept;
 
     /**
      * Returns the line that the message was generated from.
      */
-    [[nodiscard]] inline unsigned int line() const noexcept;
+    [[nodiscard]] unsigned int line() const noexcept;
 
     /**
      * Returns the column that the message was generated from.
      */
-    [[nodiscard]] inline unsigned int column() const noexcept;
+    [[nodiscard]] unsigned int column() const noexcept;
 
     /**
      * Returns the file that the message was generated from.
      */
-    [[nodiscard]] inline std::string_view file() const noexcept;
+    [[nodiscard]] std::string_view file() const noexcept;
 
     /**
      * Returns the function that the message was generated from.
      */
-    [[nodiscard]] inline std::string_view function(const std::string& relative_to = "") const noexcept;
+    [[nodiscard]] std::string_view function(const std::string& relative_to = "") const noexcept;
 
     /**
      * Promotes the severity to _at least_ the given severity. If the message is already that severity or higher, nothing is done.
      * @param severity The severity to promote to.
      * @return The message objet for monadic call chains.
      */
-    inline Message promote(const Severity& severity) noexcept;
+    Message promote(const Severity& severity) noexcept;
 
 private:
     unsigned int m_code               = 0;

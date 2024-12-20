@@ -4,5 +4,6 @@
 
 #pragma once
 
+#include "ISCLogs/NoThrowString.hpp"
 #include "ISCLogs/Message.hpp"
 #include "ISCLogs/Logger.hpp"
