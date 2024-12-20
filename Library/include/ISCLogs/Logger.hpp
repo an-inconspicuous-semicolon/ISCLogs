@@ -28,13 +28,13 @@ public:
      * Logs a message if it is above the logger's threshold.
      * @param message The message to log.
      */
-    inline void log_message(const Message& message) const noexcept;
+    void log_message(const Message& message) const noexcept;
 
     /**
      * Sets the severity threshold that the logger will use.
      * @param severity The severity above which a message will be logged.
      */
-    inline void set_severity(const Message::Severity& severity) noexcept;
+    void set_severity(const Message::Severity& severity) noexcept;
 protected:
     /**
      * Actually logs a message.

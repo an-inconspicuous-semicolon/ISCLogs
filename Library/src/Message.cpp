@@ -10,7 +10,7 @@
 
 namespace isc
 {
-inline std::string get_filename(const std::source_location& loc, const std::string& relative_to = "")
+std::string get_filename(const std::source_location& loc, const std::string& relative_to = "")
 {
     // Extract the filename from the path
     const std::filesystem::path file_path = loc.file_name();
@@ -106,68 +106,68 @@ std::string Message::message() const
     return oss.str();
 }
 
-inline bool Message::is_failure() const noexcept
+bool Message::is_failure() const noexcept
 {
     return m_severity >= Severity::Error;
 }
 
-inline Message Message::add_trace(const std::string& message) noexcept
+Message Message::add_trace(const std::string& message) noexcept
 {
     m_trace.push_back(message);
     return *this;
 }
 
-inline const std::list<std::string>& Message::get_trace() const noexcept
+const std::list<std::string>& Message::get_trace() const noexcept
 {
     return m_trace;
 }
 
-inline unsigned int Message::code() const noexcept
+unsigned int Message::code() const noexcept
 {
     return m_code;
 }
 
-inline bool Message::has_description() const noexcept
+bool Message::has_description() const noexcept
 {
     return m_has_description;
 }
 
-inline std::string_view Message::name() const noexcept
+std::string_view Message::name() const noexcept
 {
     return m_name.get();
 }
 
-inline std::string_view Message::description() const noexcept
+std::string_view Message::description() const noexcept
 {
     return m_description.get();
 }
 
-inline Message::Severity Message::severity() const noexcept
+Message::Severity Message::severity() const noexcept
 {
     return m_severity;
 }
 
-inline unsigned int Message::line() const noexcept
+unsigned int Message::line() const noexcept
 {
     return m_source_location.line();
 }
 
-inline unsigned int Message::column() const noexcept
+unsigned int Message::column() const noexcept
 {
     return m_source_location.column();
 }
 
-inline std::string_view Message::file() const noexcept
+std::string_view Message::file() const noexcept
 {
     return m_source_location.file_name();
 }
 
-inline std::string_view Message::function(const std::string& relative_to) const noexcept
+std::string_view Message::function(const std::string& relative_to) const noexcept
 {
     return get_filename(m_source_location, relative_to);
 }
 
-inline Message Message::promote(const Severity& severity) noexcept
+Message Message::promote(const Severity& severity) noexcept
 {
     if (m_severity < severity)
         m_severity = severity;

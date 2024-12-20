@@ -10,7 +10,7 @@ constexpr Logger::Logger(const Message::Severity threshold) noexcept
     : m_threshold(threshold)
 {}
 
-inline void Logger::log_message(const Message& message) const noexcept
+void Logger::log_message(const Message& message) const noexcept
 {
     if (message.severity() >= m_threshold)
         log_message_internal(message);
